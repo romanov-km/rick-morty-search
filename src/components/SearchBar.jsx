@@ -1,7 +1,7 @@
 import debounce from 'lodash.debounce';
 import { useEffect, useState } from 'react';
 
-const SearchBar = ({setSearchQuery}) => {
+const SearchBar = ({ setSearchQuery }) => {
     const [query, setQuery] = useState('');
     
     const handleSearch = debounce((value) => {
