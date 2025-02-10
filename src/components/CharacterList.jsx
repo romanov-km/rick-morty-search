@@ -1,8 +1,9 @@
 import CharacterCard from "./CharacterCard";
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { configDotenv } from "dotenv";
 
-const API_URL = "https://rickandmortyapi.com/api/character/";
+const API_URL = configDotenv.env.API_URL;
 
 const CharacterList = ({ searchQuery }) => {
     const [characters, setCharacters] = useState([]);
@@ -25,7 +26,7 @@ const CharacterList = ({ searchQuery }) => {
         <div>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
-            <div>
+            <div className="character-grid">
                 {characters.map((char) => (
                     <CharacterCard key={char.id} character={char}/>
                 ))}
