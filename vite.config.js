@@ -5,4 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/rick-morty-search/",
+  server: {
+    open: true,
+    clearScreen: false, // Отключает очистку консоли
+  },
 })
