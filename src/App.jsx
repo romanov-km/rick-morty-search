@@ -7,19 +7,19 @@ import CharacterPage from './components/CharacterPage'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
+  const [resultCount, setResultCount] = useState(0);
 
   return (
     <>
-      <h1>Rick and Morty Search</h1>
-      <SearchBar setSearchQuery={setSearchQuery} />
-      <Routes>
-        <Route path='/' element={<CharacterList searchQuery={searchQuery} />}/>
-        <Route path='/character/:id' element={<CharacterPage/>}/>
-      </Routes>
-      
-      <p className="read-the-docs">
-        type character name
-      </p>
+      <div className="app-container">
+      <SearchBar setSearchQuery={setSearchQuery} resultCount={resultCount}/>
+        
+        <Routes>
+          <Route path='/' element={<CharacterList searchQuery={searchQuery} setResultCount={setResultCount}/>}/>
+          <Route path='/character/:id' element={<CharacterPage/>}/>
+        </Routes>
+      </div>
+     
     </>
   )
 }
