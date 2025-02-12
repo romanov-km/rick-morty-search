@@ -7,7 +7,6 @@ const SearchBar = ({ setSearchQuery, resultCount }) => {
     const handleSearch = debounce((value) => {
         if (value.length > 2) {
             setSearchQuery(value);
-            console.log('query:', query);
         } else {
             setSearchQuery("");
         }
@@ -18,14 +17,11 @@ const SearchBar = ({ setSearchQuery, resultCount }) => {
     }, [query]);
 
     return (
-        <>
         <div className='search-container'>
-            <input autoFocus type='text' placeholder='Search characters...' value={query} onChange={(e) => setQuery(e.target.value)} className='search-bar'/> 
+            <input autoFocus type='text' placeholder='Search characters...' value={query} onChange={(e) => setQuery(e.target.value)} className='search-bar'/>
+            {query.length > 2 && (
+            <p className="search-result-count">Found characters: {resultCount}</p>)}
         </div>
-        {query.length > 2 && (
-            <p className="search-result-count">Found characters: {resultCount}</p>
-        )}
-        </>
     )
 }
 

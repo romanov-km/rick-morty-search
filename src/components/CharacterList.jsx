@@ -20,8 +20,11 @@ const CharacterList = ({ searchQuery, setResultCount }) => {
                 setCharacters(allCharacters.slice(0, 8));
                 setResultCount(response.data.results ? response.data.results.length : 0);
             })
-            .catch(() => {
+            .catch((err) => {
+                if (axios.isCancel(err)) return;
                 setError("Character not found!")
+                setResultCount(0);
+                setCharacters([]); // Очистка старых данных при ошибке
                 setResultCount(0);
             })
             .finally(() => setLoading(false));
