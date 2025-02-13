@@ -21,7 +21,7 @@ const CharacterCard = ({ character, size }) => {
             className={`character-card ${size === "large" ? "large-card" : "small-card"}`}
             >
                 <div className="character-description">
-                    <p>{character.name} - {character.type || "Unknown Type"}</p>
+                    <p>{character.name} - {character.species || "Unknown Type"}</p>
                 </div>
                 <div className="character-info2">
                     <div className="character-status">
